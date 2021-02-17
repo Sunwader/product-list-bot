@@ -9,9 +9,9 @@ function ProductList() {
     const [products, setProducts] = useState([]);
 
     function addProduct(text) {
-        const newroduct = { text, id: Math.random(), isCompleted: false };
+        const newProduct = { text, id: Math.random(), isCompleted: false };
 
-        setProducts([...products, newroduct]);
+        setProducts([...products, newProduct]);
     }
 
     function deleteProduct(deletedId) {
@@ -52,7 +52,7 @@ function ProductList() {
     });
 
     if (products.length === 0) {
-        return <Text>Product list is empty</Text>;
+        return <Text>Твой список покупок сейчас пуст</Text>;
     }
 
     const title = products.map((product) => (
@@ -69,9 +69,9 @@ function ProductList() {
     ));
 
     return (
-        <ButtonGroup title={title} maxColumns={3}>
+        <ButtonGroup isResizedKeyboard title={title} maxColumns={1}>
             <Button key={mode} onClick={toggleMode}>
-                {mode === DELETE_PRODUCTS_MODE ? 'Delete mode' : 'Complete mode'}
+                {mode === DELETE_PRODUCTS_MODE ? 'Режим удаления' : 'Режим выполнения'}
             </Button>
             {productsButtons}
         </ButtonGroup>
@@ -81,7 +81,7 @@ function ProductList() {
 export function App() {
     return (
         <>
-            <Text>Welcome to Product List Bot. Type your new product...</Text>
+            <Text>Привет! Добавь первый элемент списка</Text>
             <ProductList />
         </>
     );
